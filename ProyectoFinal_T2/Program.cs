@@ -164,7 +164,7 @@ namespace ProyectoFinal_T2
                     case 3:
                         GestionReserva();
                         break;
-                    case 0:
+                    
                     default:
                         Console.WriteLine("Opcion incorrecta");
                         break;
