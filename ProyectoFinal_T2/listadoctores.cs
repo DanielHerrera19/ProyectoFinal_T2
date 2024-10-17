@@ -17,12 +17,12 @@ namespace ProyectoFinal_T2
             ultimo = null;
 
             insertar("Dr Juan", "Perez", 43511457, "Cirujia Ocular", 346854);
-            insertar("Dr Juan", "Perez", 43511457, "Cirujia Ocular", 346854);
-            insertar("Dr Juan", "Perez", 43511457, "Cirujia Ocular", 346854);
-            insertar("Dr Juan", "Perez", 43511457, "Cirujia Ocular", 346854);
-            insertar("Dr Juan", "Perez", 43511457, "Cirujia Ocular", 346854);
-            insertar("Dr Juan", "Perez", 43511457, "Cirujia Ocular", 346854);
-            insertar("Dr Juan", "Perez", 43511457, "Cirujia Ocular", 346854);
+            insertar("Dr Daniel", "Hernandez", 73829104, "Oftalmología General", 346854);
+            insertar("Dr Rodrigo", "Mendoza", 54683927, "Oftalmología Pediátrica", 346854);
+            insertar("Dr Leonardo", "Cruz", 12098376, "Glaucoma", 346854);
+            insertar("Dra Jimena", "Martinez", 78562431, "Retina y Vítreo", 346854);
+            insertar("Dra Fiorella", "Romero", 49382715, "Oculoplastica", 346854);
+            insertar("Dra Jenny", "Zevallos", 82576143, "Cirugía Refractiva", 346854);
 
         }
         public void insertar(string nombre, string apellido, int dni, string especialidad, int licencia)
