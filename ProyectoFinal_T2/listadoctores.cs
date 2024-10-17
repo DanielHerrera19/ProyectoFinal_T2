@@ -194,18 +194,30 @@ namespace ProyectoFinal_T2
 
         public void ver()
         {
-            doctor u = ultimo;
-            Console.WriteLine(" -------------------------------------------------");
-            Console.WriteLine("| NOMBRE    " + "|" + " APELLIDO " + " | " + " DNI " + "    |" + " ESPECIALIDAD " + "|" + " LICENCIA |");
-            Console.WriteLine(" -------------------------------------------------");
-            while (u != null)
+			doctor u = ultimo;
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine(" -------------------------------------------------------------------------------------");
+			Console.WriteLine("| NOMBRE         | APELLIDO      |      DNI   | ESPECIALIDAD             | LICENCIA  |");
+			Console.WriteLine(" -------------------------------------------------------------------------------------");
+			Console.ForegroundColor = ConsoleColor.DarkCyan; 
+
+			while (u != null)
             {
 
 
-                Console.WriteLine(u.nombre + "   " + u.apellido + " " + u.dni + " " + u.especialidad + "  " + u.licencia);
-                Console.WriteLine("------------------------------------------");
-                u = u.siguiente;
-            }
+				// Alineamos cada columna utilizando PadRight()
+				Console.WriteLine(
+					"| " + u.nombre.PadRight(15) +  // Alinea el nombre con un espacio de 15 caracteres
+					"| " + u.apellido.PadRight(14) + // Alinea el apellido con un espacio de 14 caracteres
+					"| " + u.dni.ToString().PadRight(11) + // Alinea el DNI con un espacio de 11 caracteres
+					"| " + u.especialidad.PadRight(25) +  // Alinea la especialidad con un espacio de 16 caracteres
+					"| " + u.licencia.ToString().PadRight(10) +  // Alinea la licencia con un espacio de 10 caracteres
+					"|"
+				);
+				
+
+				u = u.siguiente;
+			}
         }
 
         public string devolver3(int s)

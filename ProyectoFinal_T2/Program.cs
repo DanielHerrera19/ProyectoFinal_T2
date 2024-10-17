@@ -593,6 +593,7 @@ namespace ProyectoFinal_T2
             Console.WriteLine("  Nombre        | Apellido        |   DNI        |  Número de Tarjeta");
             Console.WriteLine("-----------------------------------------------------------------------");
 			Console.ForegroundColor = ConsoleColor.DarkCyan;
+
 			if (!Cola.vaciaCola())
             {
                 Cola.verCola();
