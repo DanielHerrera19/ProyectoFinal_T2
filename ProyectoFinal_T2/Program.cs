@@ -76,6 +76,7 @@ namespace ProyectoFinal_T2
                 Console.WriteLine("Nombre o contraseña de administrador incorrectos.");
             }
             Console.ReadLine();
+            Pantalla_Admin();
         }
 
         // Método para el ingreso de usuarios (pacientes)
@@ -104,6 +105,43 @@ namespace ProyectoFinal_T2
             }
 
             Console.ReadLine(); // Pausar para que el usuario pueda leer el mensaje
+        }
+
+        public static int Pantalla_Admin()
+        {
+            int opcion = 0;
+            do
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("|-----------------------------------|");
+                Console.WriteLine("|           ADMINISTRADOR           |");
+                Console.WriteLine("|-----------------------------------|");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("1. Gestionar perfiles del personal medico");
+                Console.WriteLine("2. Gestionar perfiles del paciente");
+                Console.WriteLine("3. Gestion de citas reservadas");
+                Console.WriteLine("4. Salir");
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine("Eliga opcion:"); opcion = int.Parse(Console.ReadLine());
+                switch (opcion)
+                {
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+                        
+                        break;
+                    case 0:
+                    default:
+                        Console.WriteLine("Opcion incorrecta");
+                        break;
+                }
+            } while (opcion != 4);
+            return opcion;
         }
     }
 }
