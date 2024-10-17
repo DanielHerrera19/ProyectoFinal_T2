@@ -192,6 +192,7 @@ namespace ProyectoFinal_T2
                         case 4:
                             // Opción de salida
                             Console.WriteLine("Saliendo del sistema...");
+                            Environment.Exit(0);  // Cierra la consola
                             break;
 
                         default:
