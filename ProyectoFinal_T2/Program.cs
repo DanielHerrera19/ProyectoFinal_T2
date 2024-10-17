@@ -9,6 +9,30 @@ namespace ProyectoFinal_T2
     class Program
     {
         public static PilaPacientes Pila = new PilaPacientes(50);
+
+        static listadoctores a = new listadoctores();
+
+        public static void agregar1()
+        {
+            a.agregardoctor();
+        }
+        public static void eliminar1()
+        {
+            a.eliminardoctor();
+        }
+        public static void modificar1()
+        {
+            a.modoficardoctor();
+        }
+        public static void mostrar1()
+        {
+            a.ver();
+        }
+        public static void buscar1()
+        {
+            a.buscardoctor();
+        }
+
         static void Main(string[] args)
         {
             ListaDobleAdministradores listaAdministradores = new ListaDobleAdministradores();
@@ -71,13 +95,14 @@ namespace ProyectoFinal_T2
             if (esValido)
             {
                 Console.WriteLine($"Bienvenido, {nombre}");
+                Console.ReadLine();
+                Pantalla_Admin();
             }
             else
             {
                 Console.WriteLine("Nombre o contraseña de administrador incorrectos.");
             }
             Console.ReadLine();
-            Pantalla_Admin();
         }
 
         // Método para el ingreso de usuarios (pacientes)
@@ -143,6 +168,52 @@ namespace ProyectoFinal_T2
                 }
             } while (opcion != 4);
             return opcion;
+        }
+
+        public static void GestionarPersonal()
+        {
+            int opcion;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("=======================================");
+                Console.WriteLine("|         GESTION DE DOCTORES         |");
+                Console.WriteLine("=======================================");
+                Console.WriteLine("|  1. Agregar  doctor                 |");
+                Console.WriteLine("|  2. Eliminar doctor                 |");
+                Console.WriteLine("|  3. Modificar doctor                |");
+                Console.WriteLine("|  4. Mostrar  doctor                 |");
+                Console.WriteLine("|  5. Buscar doctor                   |");
+                Console.WriteLine("|  6. Salir                           |");
+                Console.WriteLine("=======================================");
+                Console.Write("Ingrese el número de opción: ");
+                opcion = int.Parse(Console.ReadLine());
+                switch (opcion)
+                {
+                    case 1:
+                        Console.Clear();
+                        agregar1();
+                        break;
+                    case 2:
+                        Console.Clear();
+                        eliminar1();
+                        break;
+                    case 3:
+                        Console.Clear();
+                        modificar1();
+                        break;
+                    case 4:
+                        Console.Clear();
+                        mostrar1();
+                        break;
+                    case 5:
+                        Console.Clear();
+                        buscar1();
+                        break;
+
+                }
+                Console.ReadKey();
+            } while (opcion != 6);
         }
 
         static void GestionarUsuarios()
@@ -340,5 +411,7 @@ namespace ProyectoFinal_T2
             Console.Write(mensaje);
             return Console.ReadLine();
         }
+
+
     }
 }

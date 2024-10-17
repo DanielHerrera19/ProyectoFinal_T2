@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CargaPacientes.cs" />
+    <Compile Include="doctor.cs" />
     <Compile Include="ListaDobleAdministradores.cs" />
+    <Compile Include="listadoctores.cs" />
     <Compile Include="NodoAdministradores.cs" />
     <Compile Include="NodoPaciente.cs" />
     <Compile Include="PilaPacientes.cs" />
