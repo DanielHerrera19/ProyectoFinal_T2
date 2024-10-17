@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProyectoFinal_T2
@@ -192,6 +193,7 @@ namespace ProyectoFinal_T2
                         case 4:
                             // Opción de salida
                             Console.WriteLine("Saliendo del sistema...");
+                            Thread.Sleep(1000);
                             Environment.Exit(0);  // Cierra la consola
                             break;
 
