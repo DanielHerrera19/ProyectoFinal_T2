@@ -156,13 +156,13 @@ namespace ProyectoFinal_T2
                 switch (opcion)
                 {
                     case 1:
-
+                        GestionarPersonal();
                         break;
                     case 2:
                         GestionarUsuarios();
                         break;
                     case 3:
-                        
+                        GestionReserva();
                         break;
                     case 0:
                     default:
@@ -213,10 +213,13 @@ namespace ProyectoFinal_T2
                         Console.Clear();
                         buscar1();
                         break;
+                    case 6:
+                        Pantalla_Admin();
+                        break;
 
                 }
                 Console.ReadKey();
-            } while (opcion != 6);
+            } while (opcion != 7);
         }
 
         static void GestionarUsuarios()
@@ -261,10 +264,13 @@ namespace ProyectoFinal_T2
 
                         ModificarPaciente();
                         break;
+                    case 5:
+                        Pantalla_Admin();
+                        break;
                 }
 
                 Console.ReadKey();
-            } while (opc != 5);
+            } while (opc != 6);
 
         }
 
@@ -446,7 +452,7 @@ namespace ProyectoFinal_T2
                         break;
 
                     case 5: // Salir
-                        Console.WriteLine("Saliendo del sistema...");
+                        Pantalla_Admin();
                         break;
 
                     default:
