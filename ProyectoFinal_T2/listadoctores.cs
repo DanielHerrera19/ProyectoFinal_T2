@@ -46,7 +46,8 @@ namespace ProyectoFinal_T2
 
         public void agregardoctor()
         {
-            Console.WriteLine("Ingrese el nombre del doctor: ");
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine("Ingrese el nombre del doctor: ");
             string nombre = Console.ReadLine();
             Console.WriteLine("Ingrese el apellido del doctor: ");
             string apellido = Console.ReadLine();
@@ -102,32 +103,32 @@ namespace ProyectoFinal_T2
                         Console.WriteLine("Nombre cambiado ");
                         d = true;
                     }
-                    if ("apelliddo" == info)
+                    if ("apellido" == info)
                     {
                         Console.WriteLine("Ingrese el apellido: ");
-                        puntero.nombre = Console.ReadLine();
+                        puntero.apellido = Console.ReadLine();
                         Console.WriteLine("Apellido cambiado ");
                         d = true;
                     }
                     if ("dni" == info)
                     {
                         Console.WriteLine("Ingrese el dni: ");
-                        puntero.nombre = Console.ReadLine();
+                        puntero.dni = int.Parse(Console.ReadLine());
                         Console.WriteLine("Dni cambiado ");
                         d = true;
                     }
                     if ("especialidad" == info)
                     {
                         Console.WriteLine("Ingrese la especialidad: ");
-                        puntero.nombre = Console.ReadLine();
+                        puntero.especialidad = Console.ReadLine();
                         Console.WriteLine("Especialidad cambiada ");
                         d = true;
                     }
                     if ("licencia" == info)
                     {
                         Console.WriteLine("Ingrese la licencia: ");
-                        puntero.nombre = Console.ReadLine();
-                        Console.WriteLine("Licencia cambiado ");
+                        puntero.licencia = int.Parse(Console.ReadLine());
+						Console.WriteLine("Licencia cambiado ");
                         d = true;
                     }
                     puntero = puntero.siguiente;
@@ -146,7 +147,7 @@ namespace ProyectoFinal_T2
         public void eliminardoctor()
         {
             bool j = false;
-            Console.WriteLine("Ingresa la licencia del doctr que deseas eliminar :");
+            Console.WriteLine("Ingresa la licencia del doctor que deseas eliminar :");
             int licencia = int.Parse(Console.ReadLine());
 
             doctor eliminar = ultimo;
@@ -195,7 +196,7 @@ namespace ProyectoFinal_T2
         {
             doctor u = ultimo;
             Console.WriteLine(" -------------------------------------------------");
-            Console.WriteLine("| NOMBRE " + "|" + " APELLIDO " + " | " + " DNI " + "    |" + " ESPECIALIDAD " + "|" + " LICENCIA |");
+            Console.WriteLine("| NOMBRE    " + "|" + " APELLIDO " + " | " + " DNI " + "    |" + " ESPECIALIDAD " + "|" + " LICENCIA |");
             Console.WriteLine(" -------------------------------------------------");
             while (u != null)
             {

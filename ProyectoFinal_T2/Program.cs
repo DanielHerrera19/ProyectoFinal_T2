@@ -50,8 +50,22 @@ namespace ProyectoFinal_T2
             bool salir = false;
             while (!salir)
             {
-                Console.Clear();
-                Console.WriteLine("==================================");
+				Console.Clear();
+				Console.ForegroundColor = ConsoleColor.DarkBlue;
+				Console.WriteLine(@"         
+===================================================
+██╗░░░██╗ ██╗ ░██████╗ ██╗ ░█████╗░ ███╗░░██╗
+██║░░░██║ ██║ ██╔════╝ ██║ ██╔══██╗ ████╗░██║
+╚██╗░██╔╝ ██║ ╚█████╗░ ██║ ██║░░██║ ██╔██╗██║
+░╚████╔╝░ ██║ ░╚═══██╗ ██║ ██║░░██║ ██║╚████║
+░░╚██╔╝░░ ██║ ██████╔╝ ██║ ╚█████╔╝ ██║░╚███║
+░░░╚═╝░░░ ╚═╝ ╚═════╝░ ╚═╝ ░╚════╝░ ╚═╝░░╚══╝
+===================================================   ");
+				Console.ForegroundColor = ConsoleColor.DarkCyan;
+				
+				Console.WriteLine("\nBienvenido a clinica oftalmologica ");
+				
+				Console.WriteLine("==================================");
                 Console.WriteLine("             ▄█████▄                 ");
                 Console.WriteLine("           ███  █  ███               ");
                 Console.WriteLine("          ███   █   ███              ");
@@ -97,7 +111,7 @@ namespace ProyectoFinal_T2
 
             if (esValido)
             {
-                Console.WriteLine($"Bienvenido, {nombre}");
+                Console.WriteLine($"Bienvenido(@), {nombre}");
                 Console.ReadLine();
                 Pantalla_Admin();
             }
@@ -141,48 +155,78 @@ namespace ProyectoFinal_T2
             int opcion = 0;
             do
             {
+                //Liampiar pantalla
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("|-----------------------------------|");
-                Console.WriteLine("|           ADMINISTRADOR           |");
-                Console.WriteLine("|-----------------------------------|");
-                Console.ForegroundColor = ConsoleColor.Cyan;
+
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine("======================================");
+                Console.WriteLine("|           ADMINISTRADOR            |");
+                Console.WriteLine("======================================");
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("1. Gestionar perfiles del personal medico");
                 Console.WriteLine("2. Gestionar perfiles del paciente");
                 Console.WriteLine("3. Gestion de citas reservadas");
                 Console.WriteLine("4. Salir");
-                Console.WriteLine("-------------------------------------");
-                Console.WriteLine("Eliga opcion:"); opcion = int.Parse(Console.ReadLine());
-                switch (opcion)
-                {
-                    case 1:
-                        GestionarPersonal();
-                        break;
-                    case 2:
-                        GestionarUsuarios();
-                        break;
-                    case 3:
-                        GestionReserva();
-                        break;
-                    
-                    default:
-                        Console.WriteLine("Opcion incorrecta");
-                        break;
-                }
-            } while (opcion != 4);
-            return opcion;
-        }
+                Console.WriteLine("======================================");
+                //Solicitar opción 
+                Console.Write("Elige una opcion:");
 
+                // Validación de la entrada
+                if (int.TryParse(Console.ReadLine(), out opcion))
+                {
+                    // Evaluar la opción seleccionada
+                    switch (opcion)
+                    {
+                        case 1:
+                            GestionarPersonal();
+                            break;
+
+                        case 2:
+                            GestionarUsuarios();
+                            break;
+
+                        case 3:
+                            GestionReserva();
+                            break;
+
+                        case 4:
+                            // Opción de salida
+                            Console.WriteLine("Saliendo del sistema...");
+                            break;
+
+                        default:
+                            Console.WriteLine("Opción incorrecta. Intenta nuevamente.");
+                            break;
+                    }
+                }
+                else
+                {
+                    // Mensaje de error si la entrada no es un número
+                    Console.WriteLine("Por favor, ingresa un número válido.");
+                }
+                // Pausa para que el usuario pueda ver el mensaje antes de limpiar la pantalla
+                if (opcion != 4) // Solo pausar si no es la opción de salida
+                {
+                    Console.WriteLine("Presiona cualquier tecla para continuar...");
+                    Console.ReadKey();
+                }
+
+            } while (opcion != 4); // Repetir el ciclo hasta que se elija la opción 4
+			return opcion;
+		}
+			
         public static void GestionarPersonal()
         {
             int opcion;
             do
             {
                 Console.Clear();
-                Console.WriteLine("=======================================");
+				Console.ForegroundColor = ConsoleColor.DarkBlue;
+				Console.WriteLine("=======================================");
                 Console.WriteLine("|         GESTION DE DOCTORES         |");
                 Console.WriteLine("=======================================");
-                Console.WriteLine("|  1. Agregar  doctor                 |");
+				Console.ForegroundColor = ConsoleColor.DarkCyan;
+				Console.WriteLine("|  1. Agregar  doctor                 |");
                 Console.WriteLine("|  2. Eliminar doctor                 |");
                 Console.WriteLine("|  3. Modificar doctor                |");
                 Console.WriteLine("|  4. Mostrar  doctor                 |");
@@ -232,9 +276,11 @@ namespace ProyectoFinal_T2
             do
             {
                 Console.Clear();
-                Console.WriteLine("Lista de Pacientes");
+				Console.ForegroundColor = ConsoleColor.DarkBlue;				
+				Console.WriteLine("Lista de Pacientes");
                 Console.WriteLine("*************************");
-                Console.WriteLine("[1] Ingresar Paciente (Push)");
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+				Console.WriteLine("[1] Ingresar Paciente (Push)");
                 Console.WriteLine("[2] Eliminar Paciente (Pop)");
                 Console.WriteLine("[3] Mostrar Pacientes");
                 Console.WriteLine("[4] Modificar datos");
@@ -328,12 +374,13 @@ namespace ProyectoFinal_T2
         public static void MostrarPacientes()
         {
             Console.Clear();
-            Console.WriteLine("[3] Mostrar Pacientes");
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine("[3] Mostrar Pacientes");
             Console.WriteLine("---------------------------------------------------------------------------------------");
             Console.WriteLine("         Paciente         |        DNI        |   Celular   |     Correo Electrónico    ");
             Console.WriteLine("---------------------------------------------------------------------------------------");
-
-            for (int i = 0; i < Pila.Top; i++)
+			Console.ForegroundColor = ConsoleColor.DarkCyan;
+			for (int i = 0; i < Pila.Top; i++)
             {
                 NodoPaciente paciente = Pila.Consultar(i);
                 Console.WriteLine(paciente.NombrePaciente.PadRight(25) + " | " +
@@ -467,10 +514,11 @@ namespace ProyectoFinal_T2
         static void MostrarMenu()
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Reserva tu cita");
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine("Reserva tu cita");
             Console.WriteLine("*************************");
-            Console.WriteLine("[1] Agregar Reserva");
+			Console.ForegroundColor = ConsoleColor.DarkCyan;
+			Console.WriteLine("[1] Agregar Reserva");
             Console.WriteLine("[2] Mostrar Reservas");
             Console.WriteLine("[3] Eliminar la primera reserva hecha");
             Console.WriteLine("[4] Vaciar Reserva");
@@ -538,12 +586,13 @@ namespace ProyectoFinal_T2
         static void MostrarReservas()
         {
             Console.Clear();
-            Console.WriteLine("[2] Mostrar Reservas");
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine("[2] Mostrar Reservas");
             Console.WriteLine("-----------------------------------------------------------------------");
             Console.WriteLine("  Nombre        | Apellido        |   DNI        |  Número de Tarjeta");
             Console.WriteLine("-----------------------------------------------------------------------");
-
-            if (!Cola.vaciaCola())
+			Console.ForegroundColor = ConsoleColor.DarkCyan;
+			if (!Cola.vaciaCola())
             {
                 Cola.verCola();
             }
