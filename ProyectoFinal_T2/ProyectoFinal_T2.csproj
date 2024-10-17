@@ -46,7 +46,7 @@
     <Compile Include="CargaPacientes.cs" />
     <Compile Include="ListaDobleAdministradores.cs" />
     <Compile Include="NodoAdministradores.cs" />
-    <Compile Include="NodoPacientes.cs" />
+    <Compile Include="NodoPaciente.cs" />
     <Compile Include="PilaPacientes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

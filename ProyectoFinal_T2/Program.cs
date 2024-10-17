@@ -16,7 +16,7 @@ namespace ProyectoFinal_T2
             listaAdministradores.AgregarAdministrador("Lisa Mendoza", "patito");
 
             // Inicializar la pila de pacientes y precargar los datos
-            PilaPacientes pilaPacientes = new PilaPacientes();
+            PilaPacientes pilaPacientes = new PilaPacientes(50);
             CargaPacientes.PrecargarDatos(pilaPacientes);
 
             bool salir = false;
@@ -87,26 +87,23 @@ namespace ProyectoFinal_T2
             Console.Write("Ingrese Contraseña: ");
             string contraseña = Console.ReadLine();
 
-            NodoPacientes actual = pila.Peek(); // Obtener el nodo superior de la pila
+            // Buscar al paciente en la pila por su DNI
+            NodoPaciente actual = pila.BuscarPacientePorDni(dni);
             bool encontrado = false;
 
-            while (actual != null)
+            // Verificar si el paciente fue encontrado y la contraseña es correcta
+            if (actual != null && actual.Contraseña == contraseña)
             {
-                if (actual.DNI == dni && actual.Contraseña == contraseña)
-                {
-                    Console.WriteLine($"Bienvenido, {actual.Nombre}");
-                    encontrado = true;
-                    break;
-                }
-                actual = actual.Siguiente; // Ir al siguiente paciente en la pila
+                Console.WriteLine($"Bienvenido, {actual.NombrePaciente}");
+                encontrado = true;
             }
 
             if (!encontrado)
             {
                 Console.WriteLine("DNI o contraseña incorrectos.");
             }
-            Console.ReadLine();
 
+            Console.ReadLine(); // Pausar para que el usuario pueda leer el mensaje
         }
     }
 }

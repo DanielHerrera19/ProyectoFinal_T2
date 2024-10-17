@@ -8,36 +8,92 @@ namespace ProyectoFinal_T2
 {
     internal class PilaPacientes
     {
-        private NodoPacientes cima;
+        private readonly int Max;
+        static private int top;
+        NodoPaciente[] Arreglo;
 
-        public PilaPacientes()
+        public PilaPacientes(int Tamaño)
         {
-            cima = null;
+            Max = Tamaño; //Define el tamaño de la pila
+            top = 0; //Inicializa la pila vacia
+            Arreglo = new NodoPaciente[Max]; //Creacion del arreglo de nodos
         }
 
-        public void Push(NodoPacientes paciente)
+        private bool PilaLlena()
         {
-            paciente.Siguiente = cima;
-            cima = paciente;
+            if (top == Max)
+                return true;
+            else
+                return false;
         }
 
-        public NodoPacientes Pop()
+        private bool PilaVacia()
         {
-            if (cima == null) return null;
-
-            NodoPacientes paciente = cima;
-            cima = cima.Siguiente;
-            return paciente;
+            if (top == 0)
+                return true; //Pila esta vacia
+            else
+                return false; //Pila tiene elementos
         }
 
-        public NodoPacientes Peek()
+        public int Top
         {
-            return cima;
+            get { return top; } //Leer la cantidad de elementos de la pila
         }
 
-        public bool EstaVacia()
+        public bool Push(NodoPaciente Nodo)
         {
-            return cima == null;
+            //Peguntar si hay espacio en Pila
+            if (!PilaLlena())
+            {
+                //Crear el espacio para el nuevo nodo de la pila       
+                Arreglo[top] = Nodo; //Insertar el nodo en pila
+                top++; //Incrementar en 1 la cantidad de nodos almacenados en pila
+                return true; //Operacion exitosa
+            }
+            else
+                return false; //No se pudo insertar el nodo en pila
+        }
+
+        public NodoPaciente Pop()
+        {
+            //Preguntar si la pila no esta vacia
+            if (!PilaVacia())
+            {
+                Arreglo[top] = null; //Eliminar el nodo de la pila
+                top--; //Disminuir en 1 la cantidad de nodos en pila
+                return Arreglo[top]; //Devolver el nodo
+            }
+            else
+                return null; //No se pudo realizar la eliminacion
+        }
+        public NodoPaciente Consultar(int r)
+        {
+            return Arreglo[r]; //Retornar el nodo consultado
+        }
+
+        public NodoPaciente BuscarPacientePorDni(int dni)
+        {
+            for (int i = top - 1; i >= 0; i--)
+            {
+                if (Arreglo[i].DniPac == dni)
+                {
+                    return Arreglo[i]; // Retorna el nodo si el paciente es encontrado
+                }
+            }
+            return null; // Retorna null si no se encuentra
+        }
+
+        public bool ActualizarPaciente(NodoPaciente pacienteActualizado)
+        {
+            for (int i = top - 1; i >= 0; i--)
+            {
+                if (Arreglo[i].DniPac == pacienteActualizado.DniPac)
+                {
+                    Arreglo[i] = pacienteActualizado; // Actualiza el nodo del paciente
+                    return true;
+                }
+            }
+            return false; // Retorna false si no se encuentra
         }
     }
 }
