@@ -44,11 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CargaPacientes.cs" />
+    <Compile Include="CargaPacientesReserva.cs" />
+    <Compile Include="ColaReserva.cs" />
+    <Compile Include="ColaReservaConLista.cs" />
     <Compile Include="doctor.cs" />
     <Compile Include="ListaDobleAdministradores.cs" />
     <Compile Include="listadoctores.cs" />
     <Compile Include="NodoAdministradores.cs" />
     <Compile Include="NodoPaciente.cs" />
+    <Compile Include="NodoReserva.cs" />
+    <Compile Include="PilaDeReservas.cs" />
     <Compile Include="PilaPacientes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

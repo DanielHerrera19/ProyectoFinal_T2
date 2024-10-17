@@ -33,6 +33,9 @@ namespace ProyectoFinal_T2
             a.buscardoctor();
         }
 
+        static ColaReserva Cola = new ColaReserva(50);
+        static PilaDeReservas pilaDeEliminados = new PilaDeReservas(10);
+
         static void Main(string[] args)
         {
             ListaDobleAdministradores listaAdministradores = new ListaDobleAdministradores();
@@ -412,6 +415,172 @@ namespace ProyectoFinal_T2
             return Console.ReadLine();
         }
 
+        static void GestionReserva()
+        {
+            // Precargar datos de pacientes al iniciar el programa
+            CargaPacientesReserva.PrecargarDatos(Cola);
+            int opcion;
 
+            // Definir el menú para la cola de reservas
+            do
+            {
+                MostrarMenu();
+                opcion = ObtenerOpcion();
+
+                switch (opcion)
+                {
+                    case 1: // Agregar una reserva a la cola
+                        AgregarReserva();
+                        break;
+
+                    case 2: // Mostrar todas las reservas en la cola
+                        MostrarReservas();
+                        break;
+
+                    case 3: // Eliminar una reserva de la cola
+                        EliminarReserva();
+                        break;
+
+                    case 4: // Vaciar la cola
+                        VaciarCola();
+                        break;
+
+                    case 5: // Salir
+                        Console.WriteLine("Saliendo del sistema...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Opción no válida, intenta nuevamente.");
+                        break;
+                }
+
+                Console.ReadKey();
+            } while (opcion != 5);
+        }
+
+        static void MostrarMenu()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Reserva tu cita");
+            Console.WriteLine("*************************");
+            Console.WriteLine("[1] Agregar Reserva");
+            Console.WriteLine("[2] Mostrar Reservas");
+            Console.WriteLine("[3] Eliminar la primera reserva hecha");
+            Console.WriteLine("[4] Vaciar Reserva");
+            Console.WriteLine("[5] Salir");
+            Console.Write("Elige una opción: ");
+        }
+
+        // Método para obtener la opción del menú
+        static int ObtenerOpcion()
+        {
+            int opcion = 0;
+            try
+            {
+                opcion = int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Por favor, ingresa un número válido.");
+            }
+            return opcion;
+        }
+
+        // Método para agregar una reserva
+        static void AgregarReserva()
+        {
+            Console.Clear();
+            Console.WriteLine("[1] Agregar Reserva");
+
+            // Ingresar los datos de la reserva
+            Console.Write("Nombre: ");
+            string nombreReserva = Console.ReadLine();
+            Console.Write("Apellido: ");
+            string apellidoReserva = Console.ReadLine();
+            Console.Write("DNI: ");
+            int dniReserva;
+            while (!int.TryParse(Console.ReadLine(), out dniReserva))
+            {
+                Console.WriteLine("Por favor, ingresa un número válido para el DNI.");
+                Console.Write("DNI: ");
+            }
+
+            Console.Write("Número de Tarjeta: ");
+            long numeroTarjeta;
+            while (!long.TryParse(Console.ReadLine(), out numeroTarjeta))
+            {
+                Console.WriteLine("Por favor, ingresa un número válido para el número de tarjeta.");
+                Console.Write("Número de Tarjeta: ");
+            }
+
+            // Crear el nodo de reserva utilizando el constructor con parámetros
+            NodoReserva reserva = new NodoReserva(nombreReserva, apellidoReserva, dniReserva, numeroTarjeta);
+
+            // Agregar la reserva a la cola
+            if (Cola.encola(reserva))
+            {
+                Console.WriteLine("Reserva agregada exitosamente.");
+            }
+            else
+            {
+                Console.WriteLine("Error: Cola llena. No se puede agregar más reservas.");
+            }
+        }
+
+        // Método para mostrar todas las reservas
+        static void MostrarReservas()
+        {
+            Console.Clear();
+            Console.WriteLine("[2] Mostrar Reservas");
+            Console.WriteLine("-----------------------------------------------------------------------");
+            Console.WriteLine("  Nombre        | Apellido        |   DNI        |  Número de Tarjeta");
+            Console.WriteLine("-----------------------------------------------------------------------");
+
+            if (!Cola.vaciaCola())
+            {
+                Cola.verCola();
+            }
+            else
+            {
+                Console.WriteLine("No hay reservas en la cola.");
+            }
+
+            Console.WriteLine("-----------------------------------------------------------------------");
+        }
+
+        // Método para eliminar la primera reserva de la cola
+        static void EliminarReserva()
+        {
+            Console.Clear();
+            Console.WriteLine("[3] Eliminar Reserva");
+
+            NodoReserva reservaEliminada = Cola.desencola();
+
+            if (reservaEliminada != null)
+            {
+                Console.WriteLine("Reserva eliminada exitosamente:");
+                Console.WriteLine("Nombre: " + reservaEliminada.Nombre);
+                Console.WriteLine("Apellido: " + reservaEliminada.Apellido);
+                Console.WriteLine("DNI: " + reservaEliminada.Dni);
+                Console.WriteLine("Número de Tarjeta: " + reservaEliminada.NumTarjeta);
+
+                // Apilar la reserva eliminada en la pila
+                pilaDeEliminados.ApilarReservaEliminada(reservaEliminada);
+            }
+            else
+            {
+                Console.WriteLine("Error: No hay reservas para eliminar.");
+            }
+        }
+
+        // Método para vaciar la cola
+        static void VaciarCola()
+        {
+            Console.Clear();
+            Console.WriteLine("[4] Vaciar Cola");
+            Cola = new ColaReserva(50); // Reinicia la cola
+            Console.WriteLine("Cola vaciada exitosamente.");
+        }
     }
 }
