@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Funciones Combinadas%28Arboles + colas%29\Arbol.cs" />
+    <Compile Include="Lista Enlazada\EncuestaSatisfaccion.cs" />
+    <Compile Include="Lista Enlazada\ListaEncuestas.cs" />
+    <Compile Include="Lista Enlazada\NodoEncuesta.cs" />
     <Compile Include="Pilas\CargaPacientes.cs" />
     <Compile Include="Colas\CargaPacientesReserva.cs" />
     <Compile Include="Funciones Combinadas%28Arboles + colas%29\Cola.cs" />
@@ -70,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Funciones Combinadas%28Colas de prioridad + ..%29\" />
-    <Folder Include="Listas Enlazadas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
