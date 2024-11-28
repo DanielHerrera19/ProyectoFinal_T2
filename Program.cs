@@ -141,7 +141,6 @@ namespace ProyectoFinal_T2
             {
                 Console.WriteLine($"Bienvenido, {actual.NombrePaciente}");
                 encontrado = true;
-                PantallaUsuario();
             }
 
             if (!encontrado)
@@ -151,112 +150,7 @@ namespace ProyectoFinal_T2
 
             Console.ReadLine(); // Pausar para que el usuario pueda leer el mensaje
         }
-        public static void PantallaUsuario()
-        {
-            bool salir = false;
-            while (!salir)
-            {
-                // Mostrar el menú
-                Console.Clear();
-                Console.WriteLine("=======================================");
-                Console.WriteLine("|             USUARIO                 |");
-                Console.WriteLine("=======================================");
-                Console.WriteLine("|  1. Cita Medica                     |");
-                Console.WriteLine("|  2. Cerrar consola                  |");
-                Console.WriteLine("=======================================");
-                Console.Write("Ingrese el número de opción: ");
-                string opcionn = Console.ReadLine();
-                if (int.TryParse(opcionn, out int opcion))
-                {
-                    switch (opcion)
-                    {
-                        case 1:
-                            Console.Clear();
-                            CitasMedicas();
-                            break;
-                        case 2:
-                            salir = true;
-                            break;
-                        default:
-                            Console.WriteLine("Opcion no valida. Por favor, ingrese un numero del 1 al 2");
-                            break;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Opcion no valida. Por favor, ingrese un numero del 1 al 2.");
-                }
-                Console.WriteLine("Presione cualquier tecla para continuar");
-                Console.ReadKey();
-                Console.Clear();
-            }
-        }
-        public static void CitasMedicas()
-        {
-            ColaDePrioridad ColaPrioridad = new ColaDePrioridad();
-            bool salir = false;
-            while (!salir)
-            {
-                // Mostrar el menú
-                Console.Clear();
-                Console.WriteLine("=======================================");
-                Console.WriteLine("|             CITAS                   |");
-                Console.WriteLine("=======================================");
-                Console.WriteLine("|  1. Registrar cita                  |");
-                Console.WriteLine("|  2. Mostrar citas                   |");
-                Console.WriteLine("|  3. Eliminar citas                  |");
-                Console.WriteLine("|  4. Modificar citas                 |");
-                Console.WriteLine("|  5. Buscar citas                    |");
-                Console.WriteLine("|  6. Desencolar                      |");
-                Console.WriteLine("|  7. Cerrar consola                  |");
-                Console.WriteLine("=======================================");
-                Console.Write("Ingrese el número de opción: ");
-                string opcionn = Console.ReadLine();
-                if (int.TryParse(opcionn, out int opcion))
-                {
-                    switch (opcion)
-                    {
-                        case 1:
-                            Console.Clear();
-                            ColaPrioridad.RegistrarCita();
-                            break;
-                        case 2:
-                            Console.Clear();
-                            ColaPrioridad.MostrarCita();
-                            break;
-                        case 3:
-                            Console.Clear();
-                            ColaPrioridad.EliminarCita();
-                            break;
-                        case 4:
-                            Console.Clear();
-                            ColaPrioridad.ModificarCita();
-                            break;
-                        case 5:
-                            Console.Clear();
-                            ColaPrioridad.BuscarCita();
-                            break;
-                        case 6:
-                            Console.Clear();
-                            ColaPrioridad.Desencolar();
-                            break;
-                        case 7:
-                            salir = true;
-                            break;
-                        default:
-                            Console.WriteLine("Opcion no valida. Por favor, ingrese un numero del 1 al 6");
-                            break;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Opcion no valida. Por favor, ingrese un numero del 1 al 6.");
-                }
-                Console.WriteLine("Presione cualquier tecla para continuar");
-                Console.ReadKey();
-                Console.Clear();
-            }
-        }
+
         public static int Pantalla_Admin()
         {
             int opcion = 0;
@@ -303,6 +197,8 @@ namespace ProyectoFinal_T2
                         case 5:
                             // Opción de salida
                             Console.WriteLine("Saliendo del sistema...");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);  // Cierra la consola
                             break;
 
                         default:
@@ -750,6 +646,22 @@ namespace ProyectoFinal_T2
             Console.WriteLine("Cola vaciada exitosamente.");
         }
 
+        // Método para obtener una nota con validación
+        static float ObtenerNota(string mensaje)
+        {
+            float nota;
+            while (true)
+            {
+                Console.Write(mensaje);
+                if (float.TryParse(Console.ReadLine(), out nota) && nota >= 0 && nota <= 20)
+                {
+                    break; // Salir del bucle si la nota es válida
+                }
+                Console.WriteLine("Error: La nota debe estar entre 0 y 20. Intenta de nuevo.");
+            }
+            return nota;
+        }
+
         public static void GestionarInventario()
         {
             Console.Clear();
@@ -775,9 +687,7 @@ namespace ProyectoFinal_T2
                 Console.WriteLine("|   9. Busqueda Recursiva               |");
                 Console.WriteLine("|  10. Busqueda Iterativa               |");
                 Console.WriteLine("|  11. Eliminar un nodo del arbol       |");
-                Console.WriteLine("|  12. Mostrar Arbol Vertical           |");
-                Console.WriteLine("|  13. Desencolar                       |");
-                Console.WriteLine("|  14. Salir                            |");
+                Console.WriteLine("|  12. Salir                            |");
                 Console.WriteLine("==========================================");
                 Console.Write("Ingrese el número de opción: ");
                 opcion = int.Parse(Console.ReadLine());
@@ -889,113 +799,80 @@ namespace ProyectoFinal_T2
                         {
                             Console.WriteLine("Busqueda Recursiva : \n");
                             Console.Write("Valor a buscar Recursivamente en el arbol : ");
-                            int dato = int.Parse(Console.ReadLine());
-
-                            // Llamar a la funcion busquedaRec
-                            NodoArbol nodoEncontrado = arboles.busquedaRec(arboles.arbol, dato);
-
-                            if (nodoEncontrado != null)
-                            {
+                            id = int.Parse(Console.ReadLine());
+                            //Llamar a la funcion busquedaRec
+                            if (arboles.busquedaRec(arboles.arbol, id) == 1)
+                                {
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("Elemento encontrado en el Arbol\n");
                                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                                 Console.WriteLine("------------------------------------");
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("ID       : " + nodoEncontrado.IdMedicamento);
-                                Console.WriteLine("Nombre   : " + nodoEncontrado.NombreMedicamento);
-                                Console.WriteLine("Cantidad : " + nodoEncontrado.Cantidad);
-                                Console.WriteLine("Precio   : " + nodoEncontrado.precio);
-                                Console.WriteLine("Fecha de vencimiento: " + nodoEncontrado.FechaVencimiento);
+                                Console.WriteLine("ID       : " + arboles.arbol.IdMedicamento);
+                                Console.WriteLine("Nombre   : " + arboles.arbol.NombreMedicamento);
+                                Console.WriteLine("Cantidad : " + arboles.arbol.Cantidad);
+                                Console.WriteLine("Precio   : " + arboles.arbol.precio);
+                                Console.WriteLine("Fecha de vencimiento: " + arboles.arbol.FechaVencimiento);
                                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                                 Console.WriteLine("------------------------------------");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Elemento no existe en el Arbol\n");
-                            }
+                                }
+                        else
+                            Console.WriteLine("Elemento no existe en el Arbol\n");
                         }
                         else
-                        {
                             Console.WriteLine("El Arbol no tiene elementos...! ");
-                        }
                         break;
-
 
                     case 10:
                         if (arboles != null)
                         {
                             Console.WriteLine("Busqueda Iterativa : \n");
                             Console.Write("Valor a buscar Iterativamente en el arbol : ");
-                            int dato = int.Parse(Console.ReadLine());
-
-                            // Llamar a la funcion busquedaIter
-                            NodoArbol nodoEncontrado = arboles.busquedaIter(arboles.arbol, dato);
-
-                            if (nodoEncontrado != null)
-                            {
+                            id = int.Parse(Console.ReadLine());
+                            //Llamar a la funcion busquedaIter
+                            if (arboles.busquedaIter(arboles.arbol, id) == 1)
+                               {
                                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                                 Console.WriteLine("Elemento encontrado en el Arbol\n");
                                 Console.WriteLine("------------------------------------");
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("ID       : " + nodoEncontrado.IdMedicamento);
-                                Console.WriteLine("Nombre   : " + nodoEncontrado.NombreMedicamento);
-                                Console.WriteLine("Cantidad : " + nodoEncontrado.Cantidad);
-                                Console.WriteLine("Precio   : " + nodoEncontrado.precio);
-                                Console.WriteLine("Fecha de vencimiento: " + nodoEncontrado.FechaVencimiento);
+                                Console.WriteLine("ID       : " + arboles.arbol.IdMedicamento);
+                                Console.WriteLine("Nombre   : " + arboles.arbol.NombreMedicamento);
+                                Console.WriteLine("Cantidad : " + arboles.arbol.Cantidad);
+                                Console.WriteLine("Precio   : " + arboles.arbol.precio);
+                                Console.WriteLine("Fecha de vencimiento: " + arboles.arbol.FechaVencimiento);
                                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                                 Console.WriteLine("------------------------------------");
-                            }
-                            else
-                            {
+                               }
+
+                        else
                                 Console.WriteLine("Elemento no existe en el Arbol\n");
-                            }
                         }
                         else
-                        {
                             Console.WriteLine("El Arbol no tiene elementos...! ");
-                        }
                         break;
-
                     case 11:
                         if (arboles != null)
                         {
                             Console.WriteLine("Eliminar nodo del Arbol : \n");
                             Console.Write("Valor a Eliminar en el Arbol : ");
-                            int dato = int.Parse(Console.ReadLine());
-
-                            // Buscar el nodo a eliminar en el árbol
-                            NodoArbol nodoAEliminar = arboles.busquedaIter(arboles.arbol, dato);
-
-                            if (nodoAEliminar != null)
+                            id = int.Parse(Console.ReadLine());
+                            //Buscar el nodo a eliminar en el arbol
+                            if (arboles.busquedaIter(arboles.arbol, id) == 1)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("Elemento Eliminado en el Arbol\n");
-
-                                // Eliminar el nodo del árbol
-                                arboles.eliminaNodoABB(ref arboles.arbol, dato);
+                                //Eliminar el nodo del arbol
+                                arboles.eliminaNodoABB(ref arboles.arbol, id);
                             }
                             else
-                            {
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("Elemento no existe en el Arbol\n");
-                            }
+                            Console.WriteLine("Elemento no existe en el Arbol\n");
                         }
                         else
-                        {
                             Console.WriteLine("El arbol no tiene elementos...!");
-                        }
                         break;
-
                     case 12:
-                        Console.Clear();
-                        Console.WriteLine("Mostrar Árbol");
-                        arboles.MostrarArbolVertical();
-                        break;
-                    case 13:
-                        Console.Clear();
-                        arboles.EliminarRaiz();
-                        break;
-                    case 14:
                         Console.WriteLine("Saliendo del programa...");
                         break;
 
@@ -1005,7 +882,7 @@ namespace ProyectoFinal_T2
                 }
 
                 Console.ReadKey();
-            } while (opcion != 14); // Opción 9 es la opción de salida
+            } while (opcion != 12); // Opción 9 es la opción de salida
         }
     }
-}
+}                  

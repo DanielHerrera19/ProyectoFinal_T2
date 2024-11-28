@@ -47,7 +47,6 @@
     <Compile Include="CargaPacientes.cs" />
     <Compile Include="CargaPacientesReserva.cs" />
     <Compile Include="Cola.cs" />
-    <Compile Include="ColaDePrioridad.cs" />
     <Compile Include="ColaReserva.cs" />
     <Compile Include="ColaReservaConLista.cs" />
     <Compile Include="doctor.cs" />
@@ -57,9 +56,7 @@
     <Compile Include="NodoArbol.cs" />
     <Compile Include="NodoCola.cs" />
     <Compile Include="NodoPaciente.cs" />
-    <Compile Include="NodoPacientes.cs" />
     <Compile Include="NodoReserva.cs" />
-    <Compile Include="PacientePrioridad.cs" />
     <Compile Include="PilaDeReservas.cs" />
     <Compile Include="PilaPacientes.cs" />
     <Compile Include="Program.cs" />
