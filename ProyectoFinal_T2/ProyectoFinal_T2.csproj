@@ -43,30 +43,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arbol.cs" />
-    <Compile Include="CargaPacientes.cs" />
-    <Compile Include="CargaPacientesReserva.cs" />
-    <Compile Include="Cola.cs" />
-    <Compile Include="ColaDePrioridad.cs" />
-    <Compile Include="ColaReserva.cs" />
-    <Compile Include="ColaReservaConLista.cs" />
-    <Compile Include="doctor.cs" />
-    <Compile Include="ListaDobleAdministradores.cs" />
-    <Compile Include="listadoctores.cs" />
-    <Compile Include="NodoAdministradores.cs" />
-    <Compile Include="NodoArbol.cs" />
-    <Compile Include="NodoCola.cs" />
-    <Compile Include="NodoPaciente.cs" />
-    <Compile Include="NodoPacientes.cs" />
-    <Compile Include="NodoReserva.cs" />
-    <Compile Include="PacientePrioridad.cs" />
-    <Compile Include="PilaDeReservas.cs" />
-    <Compile Include="PilaPacientes.cs" />
+    <Compile Include="Funciones Combinadas%28Arboles + colas%29\Arbol.cs" />
+    <Compile Include="Pilas\CargaPacientes.cs" />
+    <Compile Include="Colas\CargaPacientesReserva.cs" />
+    <Compile Include="Funciones Combinadas%28Arboles + colas%29\Cola.cs" />
+    <Compile Include="Colas De Prioridad\ColaDePrioridad.cs" />
+    <Compile Include="Colas\ColaReserva.cs" />
+    <Compile Include="Colas\ColaReservaConLista.cs" />
+    <Compile Include="Listas Dobles\doctor.cs" />
+    <Compile Include="Combinacion Login\ListaDobleAdministradores.cs" />
+    <Compile Include="Listas Dobles\listadoctores.cs" />
+    <Compile Include="Combinacion Login\NodoAdministradores.cs" />
+    <Compile Include="Funciones Combinadas%28Arboles + colas%29\NodoArbol.cs" />
+    <Compile Include="Funciones Combinadas%28Arboles + colas%29\NodoCola.cs" />
+    <Compile Include="Pilas\NodoPaciente.cs" />
+    <Compile Include="Colas De Prioridad\NodoPacientes.cs" />
+    <Compile Include="Colas\NodoReserva.cs" />
+    <Compile Include="Colas De Prioridad\PacientePrioridad.cs" />
+    <Compile Include="Colas\PilaDeReservas.cs" />
+    <Compile Include="Pilas\PilaPacientes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Funciones Combinadas%28Colas de prioridad + ..%29\" />
+    <Folder Include="Listas Enlazadas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
