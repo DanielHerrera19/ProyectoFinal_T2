@@ -33,48 +33,52 @@ namespace ProyectoFinal_T2
 
             if (arbol == null)
             {
-                arbol = q;
+                arbol = q; // Si el árbol está vacío, el nuevo nodo es la raíz.
             }
             else
             {
                 while (t != null)
                 {
                     Raiz = t.IdMedicamento;
+
+                    // Verificamos si el medicamento ya existe en el árbol
+                    if (id == Raiz)
+                    {
+                        Console.WriteLine("El medicamento con el ID " + id + " ya existe. No se agregará nuevamente.");
+                        return; // Salimos sin agregar el nodo si ya existe
+                    }
+
                     if (id < Raiz)
                     {
+                        // Si el ID es menor, vamos al subárbol izquierdo
                         if (t.Izquierdo != null)
                         {
                             t = t.Izquierdo;
                         }
                         else
                         {
-                            t.Izquierdo = q;
+                            t.Izquierdo = q; // Insertamos el nodo en el subárbol izquierdo
                             return;
                         }
                     }
                     else
                     {
-                        if (id > Raiz || id == Raiz)
+                        // Si el ID es mayor, vamos al subárbol derecho
+                        if (t.Derecho != null)
                         {
-                            if (t.
-                                Derecho != null)
-                            {
-                                t = t.Derecho;
-                            }
-                            else
-                            {
-                                t.Derecho = q;
-                                return;
-                            }
+                            t = t.Derecho;
+                        }
+                        else
+                        {
+                            t.Derecho = q; // Insertamos el nodo en el subárbol derecho
+                            return;
                         }
                     }
                 }
             }
         }
-
         public void muestraInventario(NodoArbol arb, int cont)
         {
-
             if (arb == null)
             {
                 return;
@@ -82,14 +86,18 @@ namespace ProyectoFinal_T2
             else
             {
                 muestraInventario(arb.Derecho, cont + 1);
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("*********************************************");
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("ID del producto : " + arb.IdMedicamento);
-                Console.WriteLine("Nombre : " + arb.NombreMedicamento);
-                Console.WriteLine("inventario : " + arb.Cantidad);
-                Console.WriteLine("Precio : " + "S/" + arb.precio);
-                Console.WriteLine("Fecha de vencimiento : " + arb.FechaVencimiento);
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("\t╔═════════════════════════════════════════════╗");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"\t║  ID del producto    : {arb.IdMedicamento,-18}    ║");
+                Console.WriteLine($"\t║  Nombre             : {arb.NombreMedicamento,-20}  ║");
+                Console.WriteLine($"\t║  Inventario         : {arb.Cantidad,-18}    ║");
+                Console.WriteLine($"\t║  Precio             : S/{arb.precio,-12:N2}        ║");
+                Console.WriteLine($"\t║  Fecha de vencimiento : {arb.FechaVencimiento,-19} ║");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("\t╚═════════════════════════════════════════════╝");
+                Console.WriteLine();
+
                 muestraInventario(arb.Izquierdo, cont + 1);
             }
         }
